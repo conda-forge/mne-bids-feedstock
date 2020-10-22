@@ -18,15 +18,15 @@ build:
 
 requirements:
   host:
-    - python >=3.5
+    - python >=3.6
     - pip
   run:
-    - python >=3.5
+    - python >=3.6
     - numpy
     - scipy
     - nibabel
-    - mne >=0.19.1
-    - pybv >=0.2.0
+    - mne >=0.21
+    - pybv >=0.2
 
 test:
   imports:
