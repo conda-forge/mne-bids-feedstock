@@ -1,5 +1,5 @@
 {% set name = "mne-bids" %}
-{% set version = "0.4" %}
+{% set version = "0.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: a8af1d74172a639519f7f48fc5663f007201b1d8762c44afa09be9c090859cc2
+  sha256: af57071616539cfdeaebac48468b74e7868df06e0ba38554eb295d4de5293d97
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
-     - mne_bids = mne_bids.commands.run:main
+    - mne_bids = mne_bids.commands.run:main
 
 requirements:
   host:
@@ -33,7 +33,7 @@ test:
     - mne_bids
   commands:
      # Test the entry point.
-     - mne_bids --version
+    - mne_bids --version
 
 about:
   home: https://mne.tools/mne-bids/
