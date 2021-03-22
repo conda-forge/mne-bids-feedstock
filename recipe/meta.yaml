@@ -1,5 +1,5 @@
 {% set name = "mne-bids" %}
-{% set version = "0.6" %}
+{% set version = "0.7" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: e117f7646b547504d91dd3f5faa34eba82f01a6ad5634fc04a79a566cb099dce
+  sha256: 9de8f118ada83104511b5ac7f8e4284ca3d2f038f8c1c8e3466d0aa12bb8a5f3
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - mne_bids = mne_bids.commands.run:main
@@ -22,11 +22,13 @@ requirements:
     - pip
   run:
     - python >=3.6
-    - numpy
-    - scipy
-    - nibabel
-    - mne >=0.21
-    - pybv >=0.4
+    - numpy >=1.15.4
+    - scipy >=1.5.0
+    - nibabel >=2.2
+    - mne >=0.21.2
+    - pybv >=0.5
+    - pandas >=0.23.4
+    - matplotlib
 
 test:
   imports:
