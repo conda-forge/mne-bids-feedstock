@@ -1,5 +1,5 @@
 {% set name = "mne-bids" %}
-{% set version = "0.7" %}
+{% set version = "0.8" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 9de8f118ada83104511b5ac7f8e4284ca3d2f038f8c1c8e3466d0aa12bb8a5f3
+  sha256: d72260731bdee164f3b0cb2475ad7db0bc87fa7ccfdd250b11518c01d8567170
 
 build:
   noarch: python
@@ -18,17 +18,18 @@ build:
 
 requirements:
   host:
-    - python >=3.6
+    - python >=3.7
     - pip
   run:
-    - python >=3.6
-    - numpy >=1.15.4
+    - python >=3.7
+    - numpy >=1.16.0
     - scipy >=1.5.0
     - nibabel >=2.2
     - mne >=0.21.2
     - pybv >=0.5
-    - pandas >=0.23.4
-    - matplotlib-base
+    - pandas >=0.24.0
+    - matplotlib-base >=3.1
+    - openneuro-py >=2021.8
 
 test:
   imports:
