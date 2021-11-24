@@ -28,7 +28,7 @@ requirements:
     - scipy >=1.5.0
     - nibabel >=2.5
     - pybv >=0.6
-    - EDFlib-Python >=1.0.2
+    - edflib-python >=1.0.2
     - pandas >=0.24.0
     - matplotlib-base >=3.1
 
