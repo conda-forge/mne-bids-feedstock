@@ -32,6 +32,7 @@ requirements:
     - pymatreader >=0.0.29
     - pandas >=0.24.0
     - matplotlib-base >=3.1
+    - jinja2
 
 test:
   imports:
