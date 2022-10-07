@@ -10,8 +10,8 @@ source:
   git_rev: main
 
 build:
-  number: 20221007
   noarch: python
+  number: 20221007
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - mne_bids = mne_bids.commands.run:main
@@ -22,14 +22,15 @@ requirements:
     - pip
   run:
     - python >=3.7
-    - setuptools >=46.4
+    - setuptools >=46.4.0
+    - importlib_resources  # this is specific to conda-forge-based installs
     - mne-base >=1.1
     - numpy >=1.16.0
     - scipy >=1.5.0
     - nibabel >=2.5
     - pybv >=0.6
-    - edflib-python >=1.0.6
     - pymatreader >=0.0.29
+    - edflib-python >=1.0.6
     - pandas >=0.24.0
     - matplotlib-base >=3.1
     - jinja2
