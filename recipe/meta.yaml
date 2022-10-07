@@ -1,5 +1,5 @@
 {% set name = "mne-bids" %}
-{% set version = "0.10dev0" %}
+{% set version = "0.11dev0" %}
 
 package:
   name: {{ name|lower }}
@@ -10,7 +10,7 @@ source:
   git_rev: main
 
 build:
-  number: 20220213
+  number: 20221007
   noarch: python
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
@@ -23,7 +23,7 @@ requirements:
   run:
     - python >=3.7
     - setuptools >=46.4
-    - mne-base >=0.24
+    - mne-base >=1.1
     - numpy >=1.16.0
     - scipy >=1.5.0
     - nibabel >=2.5
