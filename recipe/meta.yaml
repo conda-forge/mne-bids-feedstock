@@ -11,7 +11,7 @@ source:
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . --no-deps -vv
   entry_points:
     - mne_bids = mne_bids.commands.run:main
@@ -28,7 +28,7 @@ requirements:
     - numpy >=1.16.0
     - scipy >=1.5.0
     - nibabel >=2.5
-    - pybv >=0.6
+    - pybv >=0.7.3
     - pymatreader >=0.0.29
     - edflib-python >=1.0.6
     - pandas >=0.24.0
