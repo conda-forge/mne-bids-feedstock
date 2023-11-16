@@ -1,5 +1,5 @@
 {% set name = "mne-bids" %}
-{% set version = "0.13" %}
+{% set version = "0.14" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 5c0217e11d06175c98f26285c61bf28f13d38a39b056ad8e6a7ce2e33c3df766
+  sha256: 271e748b0cab44be39711a8d2d86b5e54148f9b862df45a3b5467ec2a69b6a4f
 
 build:
   noarch: python
@@ -27,6 +27,7 @@ requirements:
     - scipy >=1.6.3
     - nibabel >=3.2.1
     - pybv >=0.7.5
+    - eeglabio >=0.0.2
     - pymatreader >=0.0.30
     - matplotlib-base >=3.4
     - pandas >=1.2.4
