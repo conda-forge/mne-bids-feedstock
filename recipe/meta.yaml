@@ -20,6 +20,8 @@ requirements:
   host:
     - python >=3.9
     - pip
+    - hatchling
+    - hatch-vcs
   run:
     - python >=3.9
     - mne-base >=1.5
