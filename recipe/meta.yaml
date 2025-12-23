@@ -1,6 +1,5 @@
 {% set name = "mne-bids" %}
-{% set version = "0.17.0" %}
-{% set python_min = "3.10" %}
+{% set version = "0.18.0" %}
 
 package:
   name: {{ name|lower }}
@@ -8,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
-  sha256: e6415bce905d6721eb175f8eab269309cb4b75081f43c782da860a89553ab4bb
+  sha256: 9db6bbeabc8b465ce17c2356ad11606b871a0116054866a2413a9b313421134a
 
 build:
   noarch: python
