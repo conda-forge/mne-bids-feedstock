@@ -1,0 +1,72 @@
+schema_version: 1
+
+context:
+  name: mne-bids
+  version: "0.20.0"
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
+  sha256: 8d196664a2f0a3bd2d5afd41777cf6cf43606201c3b9118ab43dc92758681c23
+
+build:
+  number: 0
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . --no-deps -vv
+  python:
+    entry_points:
+      - mne_bids = mne_bids.commands.run:main
+
+requirements:
+  host:
+    - python ${{ python_min }}.*
+    - pip
+    - hatchling
+    - hatch-vcs
+  run:
+    - python >=${{ python_min }}
+    - mne-base >=1.8
+    - numpy >=1.23
+    - scipy >=1.9
+    - curryreader >=0.1.2
+    - defusedxml
+    - edfio >=0.4.10
+    - eeglabio >=0.1.0
+    - filelock >=3.20.4
+    - h5py !=3.15.0
+    - hedtools
+    - matplotlib-base >=3.6
+    - mffpy >=0.11
+    - nibabel >=3.2.1
+    - pandas >=1.3.2
+    - pybv >=0.7.5
+    - pymatreader
+
+tests:
+  - python:
+      imports:
+        - mne_bids
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
+      - mne_bids --version
+
+about:
+  homepage: https://mne.tools/mne-bids/
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: An MNE project for organizing and formatting MEG and EEG data according to the BIDS specification
+  repository: https://github.com/mne-tools/mne-bids
+
+extra:
+  recipe-maintainers:
+    - larsoner
+    - jasmainak
+    - sappelhoff
