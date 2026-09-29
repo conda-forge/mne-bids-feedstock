@@ -1,29 +1,33 @@
-{% set name = "mne-bids" %}
-{% set version = "0.20.0" %}
+schema_version: 1
+
+context:
+  name: mne-bids
+  version: "0.20.0"
 
 package:
-  name: {{ name|lower }}
-  version: {{ version }}
+  name: ${{ name|lower }}
+  version: ${{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-', '_') }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/${{ name | replace('-', '_') }}-${{ version }}.tar.gz
   sha256: 8d196664a2f0a3bd2d5afd41777cf6cf43606201c3b9118ab43dc92758681c23
 
 build:
-  noarch: python
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
-  entry_points:
-    - mne_bids = mne_bids.commands.run:main
+  noarch: python
+  script: ${{ PYTHON }} -m pip install . --no-deps -vv
+  python:
+    entry_points:
+      - mne_bids = mne_bids.commands.run:main
 
 requirements:
   host:
-    - python {{ python_min }}
+    - python ${{ python_min }}.*
     - pip
     - hatchling
     - hatch-vcs
   run:
-    - python >={{ python_min }}
+    - python >=${{ python_min }}
     - mne-base >=1.8
     - numpy >=1.23
     - scipy >=1.9
@@ -41,22 +45,25 @@ requirements:
     - pybv >=0.7.5
     - pymatreader
 
-test:
-  requires:
-    - python {{ python_min }}
-  imports:
-    - mne_bids
-  commands:
-     # Test the entry point.
-    - mne_bids --version
+tests:
+  - python:
+      imports:
+        - mne_bids
+      python_version:
+        - ${{ python_min }}.*
+        - "*"
+  - requirements:
+      run:
+        - python ${{ python_min }}.*
+    script:
+      - mne_bids --version
 
 about:
-  home: https://mne.tools/mne-bids/
+  homepage: https://mne.tools/mne-bids/
   license: BSD-3-Clause
-  license_family: BSD
   license_file: LICENSE
   summary: An MNE project for organizing and formatting MEG and EEG data according to the BIDS specification
-  dev_url: https://github.com/mne-tools/mne-bids
+  repository: https://github.com/mne-tools/mne-bids
 
 extra:
   recipe-maintainers:
